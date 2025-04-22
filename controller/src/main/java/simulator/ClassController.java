@@ -9,6 +9,7 @@ import simulator.Stats.SecondaryStats;
 import simulator.Warrior.WarriorClass;
 
 @RestController
+@Deprecated
 public class ClassController {
 
         // TODO: Works but bad
