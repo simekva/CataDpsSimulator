@@ -1,0 +1,5 @@
+simulator\Stats\ActualSimStats.class
+simulator\Stats\PrimaryStats.class
+simulator\WowClass.class
+simulator\Warrior\WarriorClass.class
+simulator\Stats\SecondaryStats.class
