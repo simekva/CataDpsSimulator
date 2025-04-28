@@ -1,45 +1,79 @@
 package simulator.Stats;
 
-import java.util.HashMap;
-
 public class SecondaryStats {
 
-    private HashMap<String, Double> stats;
+    private double hitRating;
+    private double expertiseRating;
+    private double critRating;
+    private double hasteRating;
+    private double masteryRating;
+    private double weaponMaxDamage;
+    private double weaponMinDamage;
+    private double weaponSpeed;
 
-    /**
-     * 
-     * @param hitRating
-     * @param expertiseRating
-     * @param critRating
-     * @param hasteRating
-     * @param masteryRating
-     * @param armor
-     * @param minWeaponDamage
-     * @param maxWeaponDamage
-     * @param weaponSpeed
-     */
+    private int armor;
+
+    private double dodgeRating;
+    private double parryRating;
+
     public SecondaryStats(double hitRating, double expertiseRating, double critRating, double hasteRating,
-            double masteryRating, double armor, double minWeaponDamage, double maxWeaponDamage, double weaponSpeed) {
-
-        this.stats = new HashMap<>();
-
-        this.stats.put("hitRating", hitRating);
-        this.stats.put("expertiseRating", expertiseRating);
-        this.stats.put("critRating", critRating);
-        this.stats.put("hasteRating", hasteRating);
-        this.stats.put("masteryRating", masteryRating);
-        this.stats.put("armor", armor);
-        this.stats.put("minWeaponDamage", minWeaponDamage);
-        this.stats.put("maxWeaponDamage", maxWeaponDamage);
-        this.stats.put("weaponSpeed", weaponSpeed);
+            double masteryRating, double weaponMaxDamage, double weaponMinDamage, double weaponSpeed,
+            double dodgeRating,
+            double parryRating, int armor) {
+        this.hitRating = hitRating;
+        this.expertiseRating = expertiseRating;
+        this.critRating = critRating;
+        this.hasteRating = hasteRating;
+        this.masteryRating = masteryRating;
+        this.weaponMaxDamage = weaponMaxDamage;
+        this.weaponMinDamage = weaponMinDamage;
+        this.weaponSpeed = weaponSpeed;
+        this.dodgeRating = dodgeRating;
+        this.parryRating = parryRating;
+        this.armor = armor;
     }
 
-    /**
-     * 
-     * @param s hitRating/expertiseRating/critRating/hasteRating/masteryRating/armor/minWeaponDamage/maxWeaponDamage/weaponSpeed
-     * @return
-     */
-    public double getStat(String s) {
-        return this.stats.get(s);
+    public double getHitRating() {
+        return hitRating;
+    }
+
+    public double getExpertiseRating() {
+        return expertiseRating;
+    }
+
+    public double getCritRating() {
+        return critRating;
+    }
+
+    public double getHasteRating() {
+        return hasteRating;
+    }
+
+    public double getMasteryRating() {
+        return masteryRating;
+    }
+
+    public double getWeaponMaxDamage() {
+        return weaponMaxDamage;
+    }
+
+    public double getWeaponMinDamage() {
+        return weaponMinDamage;
+    }
+
+    public double getWeaponSpeed() {
+        return weaponSpeed;
+    }
+
+    public double getDodgeRating() {
+        return dodgeRating;
+    }
+
+    public double getParryRating() {
+        return parryRating;
+    }
+
+    public int getArmor() {
+        return armor;
     }
 }

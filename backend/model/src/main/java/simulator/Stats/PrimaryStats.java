@@ -1,35 +1,38 @@
 package simulator.Stats;
 
-import java.util.HashMap;
-
 public class PrimaryStats {
 
-    private HashMap<String, Double> stats;
+    private int strength;
+    private int agility;
+    private int stamina;
+    private int intellect;
+    private int spirit;
 
-    /**
-     * 
-     * @param strength
-     * @param agility
-     * @param intellect
-     * @param stamina
-     * @param spirit
-     */
-    public PrimaryStats(double strength, double agility, double intellect, double stamina, double spirit) {
-        this.stats = new HashMap<>();
-
-        this.stats.put("strength", strength);
-        this.stats.put("agility", agility);
-        this.stats.put("intellect", intellect);
-        this.stats.put("stamina", stamina);
-        this.stats.put("spirit", spirit);
+    public PrimaryStats(int strength, int agility, int stamina, int intellect, int spirit) {
+        this.strength = strength;
+        this.agility = agility;
+        this.stamina = stamina;
+        this.intellect = intellect;
+        this.spirit = spirit;
     }
 
-    /**
-     * 
-     * @param s strength/agility/intellect/stamina
-     * @return
-     */
-    public double getStat(String s) {
-        return this.stats.get(s);
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public int getStamina() {
+        return stamina;
+    }
+
+    public int getIntellect() {
+        return intellect;
+    }
+
+    public int getSpirit() {
+        return spirit;
     }
 }
