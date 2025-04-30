@@ -9,9 +9,6 @@ public class CompleteStats {
     private int spellPower;
     private double critChance;
     private double masteryChance;
-    private double weaponMaxDamage;
-    private double weaponMinDamage;
-    private double weaponSpeed;
     private double dodgeChance;
     private double parryChance;
     private double blockChance;
@@ -19,19 +16,16 @@ public class CompleteStats {
     private double armor;
 
     public CompleteStats(PrimaryStats pStats, SecondaryStats sStats, int attackPower, int spellPower, double critChance,
-            double masteryChance, double weaponMaxDamage, double weaponMinDamage, double weaponSpeed,
-            double dodgeChance, double parryChance, double armor) {
+            double masteryChance, double dodgeChance, double parryChance, double blockChance, double armor) {
         this.primaryStats = pStats;
         this.secondaryStats = sStats;
         this.attackPower = attackPower;
         this.spellPower = spellPower;
         this.critChance = critChance;
         this.masteryChance = masteryChance;
-        this.weaponMaxDamage = weaponMaxDamage;
-        this.weaponMinDamage = weaponMinDamage;
-        this.weaponSpeed = weaponSpeed;
         this.dodgeChance = dodgeChance;
         this.parryChance = parryChance;
+        this.blockChance = blockChance;
         this.armor = armor;
     }
 
@@ -59,18 +53,6 @@ public class CompleteStats {
         return masteryChance;
     }
 
-    public double getWeaponMaxDamage() {
-        return weaponMaxDamage;
-    }
-
-    public double getWeaponMinDamage() {
-        return weaponMinDamage;
-    }
-
-    public double getWeaponSpeed() {
-        return weaponSpeed;
-    }
-
     public double getDodgeChance() {
         return dodgeChance;
     }
@@ -89,16 +71,13 @@ public class CompleteStats {
 
     public String toString() {
         return "CompleteStats{" +
-                ", attackPower=" + attackPower +
-                ", spellPower=" + spellPower +
-                ", critChance=" + critChance +
-                ", masteryChance=" + masteryChance +
-                ", weaponMaxDamage=" + weaponMaxDamage +
-                ", weaponMinDamage=" + weaponMinDamage +
-                ", weaponSpeed=" + weaponSpeed +
-                ", dodgeChance=" + dodgeChance +
-                ", parryChance=" + parryChance +
-                ", blockChance=" + blockChance +
+                ", attackPower=" + attackPower + "\n" +
+                ", spellPower=" + spellPower + "\n" +
+                ", critChance=" + critChance + "\n" +
+                ", masteryChance=" + masteryChance + "\n" +
+                ", dodgeChance=" + dodgeChance + "\n" +
+                ", parryChance=" + parryChance + "\n" +
+                ", blockChance=" + blockChance + "\n" +
                 ", armor=" + armor +
                 '}';
     }

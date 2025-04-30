@@ -76,4 +76,16 @@ public class SecondaryStats {
     public int getArmor() {
         return armor;
     }
+
+    public void setMinDamage(double weaponMinDamage) {
+        this.weaponMinDamage = weaponMinDamage;
+    }
+
+    public void setMaxDamage(double weaponMaxDamage) {
+        this.weaponMaxDamage = weaponMaxDamage;
+    }
+
+    public void setWeaponSpeed(double weaponSpeed) {
+        this.weaponSpeed = weaponSpeed;
+    }
 }
