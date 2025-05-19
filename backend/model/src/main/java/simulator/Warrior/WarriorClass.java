@@ -80,7 +80,7 @@ public class WarriorClass implements WowClass {
     private double calculateMasteryChance(SecondaryStats sStats, CompleteStats baseStats) {
         double masteryRating = baseStats.getSecondaryStats().getMasteryRating() + sStats.getMasteryRating();
         double masteryPoints = Math.floor(masteryRating / 179.28);
-        return masteryPoints * 2.2 + baseStats.getMasteryChance(); // 2.2% bonus per point
+        return Math.floor(masteryPoints * 2.2) + baseStats.getMasteryChance(); // 2.2% bonus per point
     }
 
     private double calculateDodgeChance(SecondaryStats sStats, CompleteStats baseStats) {
