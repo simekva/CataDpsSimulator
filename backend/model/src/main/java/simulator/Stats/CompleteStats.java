@@ -29,6 +29,9 @@ public class CompleteStats {
         this.armor = armor;
     }
 
+    public CompleteStats() {
+    }
+
     public PrimaryStats getPrimaryStats() {
         return primaryStats;
     }
@@ -67,6 +70,46 @@ public class CompleteStats {
 
     public double getArmor() {
         return armor;
+    }
+
+    public void setPrimaryStats(PrimaryStats primaryStats) {
+        this.primaryStats = primaryStats;
+    }
+
+    public void setSecondaryStats(SecondaryStats secondaryStats) {
+        this.secondaryStats = secondaryStats;
+    }
+
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
+    }
+
+    public void setSpellPower(int spellPower) {
+        this.spellPower = spellPower;
+    }
+
+    public void setCritChance(double critChance) {
+        this.critChance = critChance;
+    }
+
+    public void setMasteryChance(double masteryChance) {
+        this.masteryChance = masteryChance;
+    }
+
+    public void setDodgeChance(double dodgeChance) {
+        this.dodgeChance = dodgeChance;
+    }
+
+    public void setParryChance(double parryChance) {
+        this.parryChance = parryChance;
+    }
+
+    public void setBlockChance(double blockChance) {
+        this.blockChance = blockChance;
+    }
+
+    public void setArmor(double armor) {
+        this.armor = armor;
     }
 
     public String toString() {

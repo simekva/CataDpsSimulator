@@ -17,9 +17,21 @@ public class WarriorClass implements WowClass {
         this.stats = calculateCompleteStats(pStats, sStats, baseStats);
     }
 
+    public WarriorClass() {
+
+    }
+
     @Override
     public void setBaseStats(CompleteStats baseStats) {
         this.completeBaseStats = baseStats;
+    }
+
+    public CompleteStats getBaseStats() {
+        return this.completeBaseStats;
+    }
+
+    public void setStats(CompleteStats stats) {
+        this.stats = stats;
     }
 
     @Override
@@ -35,8 +47,8 @@ public class WarriorClass implements WowClass {
         double weaponMinDamage = calculateMinWeaponDamage(sStats, attackPower, weaponSpeed, baseStats);
 
         sStats.setWeaponSpeed(weaponSpeed);
-        sStats.setMinDamage(weaponMinDamage);
-        sStats.setMaxDamage(weaponMaxDamage);
+        sStats.setWeaponMinDamage(weaponMinDamage);
+        sStats.setWeaponMaxDamage(weaponMaxDamage);
 
         double critChance = calculateCritChance(pStats, sStats, baseStats);
         double masteryChance = calculateMasteryChance(sStats, baseStats);

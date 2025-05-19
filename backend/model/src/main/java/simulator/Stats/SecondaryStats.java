@@ -33,6 +33,9 @@ public class SecondaryStats {
         this.armor = armor;
     }
 
+    public SecondaryStats() {
+    }
+
     public double getHitRating() {
         return hitRating;
     }
@@ -77,15 +80,47 @@ public class SecondaryStats {
         return armor;
     }
 
-    public void setMinDamage(double weaponMinDamage) {
-        this.weaponMinDamage = weaponMinDamage;
+    public void setHitRating(double hitRating) {
+        this.hitRating = hitRating;
     }
 
-    public void setMaxDamage(double weaponMaxDamage) {
+    public void setExpertiseRating(double expertiseRating) {
+        this.expertiseRating = expertiseRating;
+    }
+
+    public void setCritRating(double critRating) {
+        this.critRating = critRating;
+    }
+
+    public void setHasteRating(double hasteRating) {
+        this.hasteRating = hasteRating;
+    }
+
+    public void setMasteryRating(double masteryRating) {
+        this.masteryRating = masteryRating;
+    }
+
+    public void setWeaponMaxDamage(double weaponMaxDamage) {
         this.weaponMaxDamage = weaponMaxDamage;
+    }
+
+    public void setWeaponMinDamage(double weaponMinDamage) {
+        this.weaponMinDamage = weaponMinDamage;
     }
 
     public void setWeaponSpeed(double weaponSpeed) {
         this.weaponSpeed = weaponSpeed;
+    }
+
+    public void setDodgeRating(double dodgeRating) {
+        this.dodgeRating = dodgeRating;
+    }
+
+    public void setParryRating(double parryRating) {
+        this.parryRating = parryRating;
+    }
+
+    public void setArmor(int armor) {
+        this.armor = armor;
     }
 }
