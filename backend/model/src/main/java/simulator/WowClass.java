@@ -1,9 +1,10 @@
 package simulator;
 
-import simulator.Stats.ActualSimStats;
+import simulator.Stats.CompleteStats;
 
 public interface WowClass {
 
-    public ActualSimStats getCalculatedStatsByClass();
+    CompleteStats getCompleteStats();
 
+    void setBaseStats(CompleteStats baseStats);
 }
