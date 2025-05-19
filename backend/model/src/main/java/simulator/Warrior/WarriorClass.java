@@ -50,13 +50,17 @@ public class WarriorClass implements WowClass {
         sStats.setWeaponMinDamage(weaponMinDamage);
         sStats.setWeaponMaxDamage(weaponMaxDamage);
 
+        double hitChance = calculateHitChance(sStats);
+        double expertiseChance = calculateExpertiseChance(sStats);
+
         double critChance = calculateCritChance(pStats, sStats, baseStats);
         double masteryChance = calculateMasteryChance(sStats, baseStats);
         double dodgeChance = calculateDodgeChance(sStats, baseStats);
         double parryChance = calculateParryChance(pStats, sStats, baseStats);
         int armor = calculateArmor(sStats, baseStats);
 
-        CompleteStats completeStats = new CompleteStats(pStats, sStats, attackPower, 0, critChance, masteryChance,
+        CompleteStats completeStats = new CompleteStats(pStats, sStats, attackPower, 0, hitChance, expertiseChance,
+                critChance, masteryChance,
                 dodgeChance, parryChance, baseStats.getBlockChance(), armor);
 
         return completeStats;
@@ -87,6 +91,15 @@ public class WarriorClass implements WowClass {
         double agility = baseStats.getPrimaryStats().getAgility() + pStats.getAgility();
         double critFromAgility = agility / 324.85;
         return critFromRating + critFromAgility + baseStats.getCritChance();
+    }
+
+    private double calculateHitChance(SecondaryStats sStats) {
+        return sStats.getHitRating() / 120.125;
+    }
+
+    private double calculateExpertiseChance(SecondaryStats sStats) {
+        int expertisePoints = (int) Math.floor(sStats.getExpertiseRating() / 30.0272);
+        return expertisePoints * 0.25;
     }
 
     private double calculateMasteryChance(SecondaryStats sStats, CompleteStats baseStats) {
@@ -129,7 +142,7 @@ public class WarriorClass implements WowClass {
 
         PrimaryStats basePrimaryStats = new PrimaryStats(189, 143, 173, 37, 63);
         SecondaryStats baseSecondaryStats = new SecondaryStats(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        CompleteStats baseStats = new CompleteStats(basePrimaryStats, baseSecondaryStats, 613, 0, 0.5, 17,
+        CompleteStats baseStats = new CompleteStats(basePrimaryStats, baseSecondaryStats, 613, 0, 0, 0, 0.5, 17,
                 5, 5, 5, 0);
 
         WarriorClass warrior = new WarriorClass(pStats, sStats, baseStats);

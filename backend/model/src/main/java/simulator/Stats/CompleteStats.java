@@ -7,6 +7,8 @@ public class CompleteStats {
     // To be calculated based on the primary and secondary stats
     private int attackPower;
     private int spellPower;
+    private double hitChance;
+    private double expertiseChance;
     private double critChance;
     private double masteryChance;
     private double dodgeChance;
@@ -15,12 +17,15 @@ public class CompleteStats {
 
     private double armor;
 
-    public CompleteStats(PrimaryStats pStats, SecondaryStats sStats, int attackPower, int spellPower, double critChance,
+    public CompleteStats(PrimaryStats pStats, SecondaryStats sStats, int attackPower, int spellPower, double hitChance,
+            double expertiseChance, double critChance,
             double masteryChance, double dodgeChance, double parryChance, double blockChance, double armor) {
         this.primaryStats = pStats;
         this.secondaryStats = sStats;
         this.attackPower = attackPower;
         this.spellPower = spellPower;
+        this.hitChance = hitChance;
+        this.expertiseChance = expertiseChance;
         this.critChance = critChance;
         this.masteryChance = masteryChance;
         this.dodgeChance = dodgeChance;
@@ -46,6 +51,14 @@ public class CompleteStats {
 
     public int getSpellPower() {
         return spellPower;
+    }
+
+    public double getHitChance() {
+        return this.hitChance;
+    }
+
+    public double getExpertiseChance() {
+        return this.expertiseChance;
     }
 
     public double getCritChance() {
@@ -88,6 +101,14 @@ public class CompleteStats {
         this.spellPower = spellPower;
     }
 
+    public void setHitChance(double h) {
+        this.hitChance = h;
+    }
+
+    public void setExpertiseChance(double e) {
+        this.expertiseChance = e;
+    }
+
     public void setCritChance(double critChance) {
         this.critChance = critChance;
     }
@@ -116,6 +137,8 @@ public class CompleteStats {
         return "CompleteStats{" +
                 ", attackPower=" + attackPower + "\n" +
                 ", spellPower=" + spellPower + "\n" +
+                ", hitChance=" + hitChance + "\n" +
+                ", expertiseChance=" + expertiseChance + "\n" +
                 ", critChance=" + critChance + "\n" +
                 ", masteryChance=" + masteryChance + "\n" +
                 ", dodgeChance=" + dodgeChance + "\n" +
