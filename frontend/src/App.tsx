@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { WowClasses } from "./WowClasses";
 import ClassPage from "./Pages/ClassPage";
 import { IndexPage } from "./Pages/IndexPage";
+import { NoPage } from "./Pages/NoPage";
 
 const App = () => (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const App = () => (
           element={<ClassPage wowClass={className} />}
         />
       ))}
+      <Route path="*" element={<NoPage />}></Route>
     </Routes>
   </BrowserRouter>
 );
