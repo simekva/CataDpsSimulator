@@ -1,19 +1,14 @@
 type Query {
-  getWarrior: Warrior!
+  getWowClass: WowClass!
 }
 
 type Mutation {
-  createWarrior(
+  createWowClass(
+    class: String!
     pStats: PrimaryStatsInput!
     sStats: SecondaryStatsInput!
     baseStats: BaseStatsInput!
-  ): Warrior!
-}
-
-input WarriorInput {
-  PrimaryStats: PrimaryStatsInput!
-  SecondaryStats: SecondaryStatsInput!
-  BaseStats: BaseStatsInput!
+  ): WowClass!
 }
 
 type PrimaryStats {
@@ -49,7 +44,7 @@ type BaseStats {
   blockChance: Float!
 }
 
-type Warrior {
+type WowClass {
   CompleteStats: BaseStats!
 }
 
