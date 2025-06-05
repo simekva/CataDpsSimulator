@@ -16,6 +16,9 @@ public class PrimaryStats {
         this.spirit = spirit;
     }
 
+    public PrimaryStats() {
+    }
+
     public int getStrength() {
         return strength;
     }
@@ -34,5 +37,25 @@ public class PrimaryStats {
 
     public int getSpirit() {
         return spirit;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
+    }
+
+    public void setSpirit(int spirit) {
+        this.spirit = spirit;
     }
 }

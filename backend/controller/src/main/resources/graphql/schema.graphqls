@@ -1,0 +1,85 @@
+type Query {
+  getWarrior: Warrior!
+}
+
+type Mutation {
+  createWarrior(
+    pStats: PrimaryStatsInput!
+    sStats: SecondaryStatsInput!
+    baseStats: BaseStatsInput!
+  ): Warrior!
+}
+
+input WarriorInput {
+  PrimaryStats: PrimaryStatsInput!
+  SecondaryStats: SecondaryStatsInput!
+  BaseStats: BaseStatsInput!
+}
+
+type PrimaryStats {
+  Strength: Int!
+  Agility: Int!
+  Intellect: Int!
+  Stamina: Int!
+  Spirit: Int!
+}
+
+type SecondaryStats {
+  hitRating: Int!
+  expertiseRating: Int!
+  critRating: Int!
+  hasteRating: Int!
+  masteryRating: Int!
+  weaponMaxDamage: Float!
+  weaponMinDamage: Float!
+  weaponSpeed: Float!
+}
+
+type BaseStats {
+  PrimaryStats: PrimaryStats!
+  SecondaryStats: SecondaryStats!
+  attackPower: Int!
+  spellPower: Int!
+  hitChance: Float!
+  expertiseChance: Float!
+  critChance: Float!
+  masteryChance: Float!
+  dodgeChance: Float!
+  parryChance: Float!
+  blockChance: Float!
+}
+
+type Warrior {
+  CompleteStats: BaseStats!
+}
+
+input PrimaryStatsInput {
+  Strength: Int!
+  Agility: Int!
+  Intellect: Int!
+  Stamina: Int!
+  Spirit: Int!
+}
+
+input SecondaryStatsInput {
+  hitRating: Int!
+  expertiseRating: Int!
+  critRating: Int!
+  hasteRating: Int!
+  masteryRating: Int!
+  weaponMaxDamage: Float!
+  weaponMinDamage: Float!
+  weaponSpeed: Float!
+}
+
+input BaseStatsInput {
+  PrimaryStats: PrimaryStatsInput!
+  SecondaryStats: SecondaryStatsInput!
+  attackPower: Int!
+  spellPower: Int!
+  critChance: Float!
+  masteryChance: Float!
+  dodgeChance: Float!
+  parryChance: Float!
+  blockChance: Float!
+}
