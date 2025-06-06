@@ -1,0 +1,17 @@
+package items;
+
+public enum StatsEnum {
+    ARMOR,
+    STRENGTH,
+    AGILITY,
+    INTELLECT,
+    STAMINA,
+    SPIRIT,
+    EXPERTISERATING,
+    HITRATING,
+    CRITRATING,
+    MASTERYRATING,
+    HASTERATING,
+    ATTACKPOWER,
+    SPELLPOWER
+}

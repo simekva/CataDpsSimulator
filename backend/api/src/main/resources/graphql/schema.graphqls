@@ -1,0 +1,127 @@
+type Query {
+  allItems: [Item!]!
+  itemById(id: ID!): Item
+  getWowClass: WowClass!
+}
+
+enum ItemSlotEnum {
+  HEAD
+  NECK
+  SHOULDERS
+  CHEST
+  WAIST
+  LEGS
+  FEET
+  WRISTS
+  HANDS
+  FINGER
+  TRINKET
+  BACK
+  MAIN_HAND
+  OFF_HAND
+  TWO_HAND
+}
+
+type Mutation {
+  createWowClass(
+    class: String!
+    pStats: PrimaryStatsInput!
+    sStats: SecondaryStatsInput!
+    baseStats: BaseStatsInput!
+  ): WowClass!
+  createItem(
+    name: String!
+    itemLevel: Int!
+    itemSlot: ItemSlotEnum!
+    colorsOnGemSlots: [String!]!
+    stats: [statMapTupleInput!]!
+  ): Item!
+  deleteItem(id: ID!): Item
+}
+
+type Item {
+  id: ID!
+  name: String!
+  itemLevel: Int!
+  itemSlot: ItemSlotEnum!
+  colorsOnGemSlots: [String]
+  stats: [statMapTuple!]!
+}
+
+type statMapTuple {
+  key: String!
+  value: Int!
+}
+
+input statMapTupleInput {
+  key: String!
+  value: Int!
+}
+
+type PrimaryStats {
+  Strength: Int!
+  Agility: Int!
+  Intellect: Int!
+  Stamina: Int!
+  Spirit: Int!
+}
+
+type SecondaryStats {
+  hitRating: Int!
+  expertiseRating: Int!
+  critRating: Int!
+  hasteRating: Int!
+  masteryRating: Int!
+  weaponMaxDamage: Float!
+  weaponMinDamage: Float!
+  weaponSpeed: Float!
+}
+
+type BaseStats {
+  PrimaryStats: PrimaryStats!
+  SecondaryStats: SecondaryStats!
+  attackPower: Int!
+  spellPower: Int!
+  hitChance: Float!
+  expertiseChance: Float!
+  critChance: Float!
+  masteryChance: Float!
+  dodgeChance: Float!
+  parryChance: Float!
+  blockChance: Float!
+}
+
+type WowClass {
+  CompleteStats: BaseStats!
+}
+
+input PrimaryStatsInput {
+  Strength: Int!
+  Agility: Int!
+  Intellect: Int!
+  Stamina: Int!
+  Spirit: Int!
+}
+
+input SecondaryStatsInput {
+  hitRating: Int!
+  expertiseRating: Int!
+  critRating: Int!
+  hasteRating: Int!
+  masteryRating: Int!
+  weaponMaxDamage: Float!
+  weaponMinDamage: Float!
+  weaponSpeed: Float!
+}
+
+input BaseStatsInput {
+  PrimaryStats: PrimaryStatsInput!
+  SecondaryStats: SecondaryStatsInput!
+  attackPower: Int!
+  spellPower: Int!
+  critChance: Float!
+  masteryChance: Float!
+  dodgeChance: Float!
+  parryChance: Float!
+  blockChance: Float!
+}
