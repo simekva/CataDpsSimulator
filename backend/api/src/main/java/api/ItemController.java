@@ -44,6 +44,8 @@ public class ItemController {
         System.out.println("Creating item with name: " + name + ", itemLevel: " + itemLevel + ", itemSlot: "
                 + itemSlot + ", colorsOnGemSlots: " + colorsOnGemSlots + ", stats: " + stats);
 
+        // TODO: Edit Item to support a list of StatsInput instead of Map for graphql
+        // support.
         Map<StatsEnum, Integer> statsMap = stats.stream()
                 .collect(Collectors.toMap(StatsInput::getKey, StatsInput::getValue));
 
