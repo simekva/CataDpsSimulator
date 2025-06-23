@@ -16,7 +16,7 @@ public class Item {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private long id;
 
     @OneToMany(mappedBy = "item")
     private Collection<GemSlot> gemSlots;

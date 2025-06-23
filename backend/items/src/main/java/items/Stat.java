@@ -18,7 +18,7 @@ public class Stat {
     private Long id;
     
     @Enumerated(EnumType.STRING)
-    private StatsEnum stat;
+    private StatsEnum key;
 
     private int value;
 
@@ -26,8 +26,10 @@ public class Stat {
     @JoinColumn(name = "item_id", foreignKey = @ForeignKey(name = "fk_stat_item"))
     private Item item;
 
-    public Stat(StatsEnum stat, int value) {
-        this.stat= stat;
+    public Stat() {}
+
+    public Stat(StatsEnum key, int value) {
+        this.key = key;
         this.value = value;
     }
 

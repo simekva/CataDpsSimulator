@@ -24,6 +24,8 @@ public class GemSlot {
     @Enumerated(EnumType.STRING)
     private GemSlotColorEnum color;
 
+    public GemSlot() {}
+
     public GemSlot(GemSlotColorEnum color) {
         this.color = color;
     }
