@@ -11,24 +11,28 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class GemSlot {
+public class Stat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Enumerated(EnumType.STRING)
+    private StatsEnum stat;
+
+    private int value;
 
     @ManyToOne
     @JoinColumn(name = "item_id", foreignKey = @ForeignKey(name = "fk_stat_item"))
     private Item item;
 
-    @Enumerated(EnumType.STRING)
-    private GemSlotColorEnum color;
-
-    public GemSlot(GemSlotColorEnum color) {
-        this.color = color;
+    public Stat(StatsEnum stat, int value) {
+        this.stat= stat;
+        this.value = value;
     }
 
-    public GemSlotColorEnum getColor() {
-        return this.color;
+    public int getStatValue() {
+        return this.value;
     }
+
 }
