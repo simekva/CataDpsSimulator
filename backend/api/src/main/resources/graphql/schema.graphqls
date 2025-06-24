@@ -4,6 +4,23 @@ type Query {
   getWowClass: WowClass!
 }
 
+type Mutation {
+  createWowClass(
+    class: String!
+    pStats: PrimaryStatsInput!
+    sStats: SecondaryStatsInput!
+    baseStats: BaseStatsInput!
+  ): WowClass!
+  createItem(
+    name: String!
+    itemLevel: Int!
+    itemSlot: ItemSlotEnum!
+    gemSlots: [GemSlotInput!]!
+    stats: [statInput!]!
+  ): Item!
+  deleteItem(id: ID!): Item
+}
+
 enum ItemSlotEnum {
   HEAD
   NECK
@@ -29,23 +46,6 @@ enum GemSlotColorEnum {
   YELLOW
 }
 
-type Mutation {
-  createWowClass(
-    class: String!
-    pStats: PrimaryStatsInput!
-    sStats: SecondaryStatsInput!
-    baseStats: BaseStatsInput!
-  ): WowClass!
-  createItem(
-    name: String!
-    itemLevel: Int!
-    itemSlot: ItemSlotEnum!
-    gemSlots: [GemSlotInput!]!
-    stats: [statInput!]!
-  ): Item!
-  deleteItem(id: ID!): Item
-}
-
 type Item {
   id: ID!
   name: String!
@@ -55,12 +55,12 @@ type Item {
   stats: [stat!]!
 }
 
-input GemSlotInput {
-  color: String!
-}
-
 type GemSlot {
   color: GemSlotColorEnum!
+}
+
+input GemSlotInput {
+  color: String!
 }
 
 type stat {
@@ -73,6 +73,10 @@ input statInput {
   value: Int!
 }
 
+type WowClass {
+  CompleteStats: BaseStats!
+}
+
 type PrimaryStats {
   Strength: Int!
   Agility: Int!
@@ -81,7 +85,26 @@ type PrimaryStats {
   Spirit: Int!
 }
 
+input PrimaryStatsInput {
+  Strength: Int!
+  Agility: Int!
+  Intellect: Int!
+  Stamina: Int!
+  Spirit: Int!
+}
+
 type SecondaryStats {
+  hitRating: Int!
+  expertiseRating: Int!
+  critRating: Int!
+  hasteRating: Int!
+  masteryRating: Int!
+  weaponMaxDamage: Float!
+  weaponMinDamage: Float!
+  weaponSpeed: Float!
+}
+
+input SecondaryStatsInput {
   hitRating: Int!
   expertiseRating: Int!
   critRating: Int!
@@ -106,29 +129,6 @@ type BaseStats {
   blockChance: Float!
 }
 
-type WowClass {
-  CompleteStats: BaseStats!
-}
-
-input PrimaryStatsInput {
-  Strength: Int!
-  Agility: Int!
-  Intellect: Int!
-  Stamina: Int!
-  Spirit: Int!
-}
-
-input SecondaryStatsInput {
-  hitRating: Int!
-  expertiseRating: Int!
-  critRating: Int!
-  hasteRating: Int!
-  masteryRating: Int!
-  weaponMaxDamage: Float!
-  weaponMinDamage: Float!
-  weaponSpeed: Float!
-}
-
 input BaseStatsInput {
   PrimaryStats: PrimaryStatsInput!
   SecondaryStats: SecondaryStatsInput!
@@ -140,3 +140,4 @@ input BaseStatsInput {
   parryChance: Float!
   blockChance: Float!
 }
+

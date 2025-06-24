@@ -1,4 +1,4 @@
-package items;
+package items.Enums;
 
 public enum StatsEnum {
     ARMOR,

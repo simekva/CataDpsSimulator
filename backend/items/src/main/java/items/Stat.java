@@ -1,5 +1,6 @@
 package items;
 
+import items.Enums.StatsEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

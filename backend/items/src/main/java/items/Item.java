@@ -2,6 +2,7 @@ package items;
 
 import java.util.Collection;
 
+import items.Enums.ItemSlotEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
