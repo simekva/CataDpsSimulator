@@ -106,8 +106,7 @@
           <artifactId>maven-compiler-plugin</artifactId>
               
           
-          <version>3.13.0</version>
-                  
+          <version>3.13.0</version>                
         </plugin>
                 
         <plugin>
@@ -123,6 +122,15 @@
           <artifactId>maven-jar-plugin</artifactId>
                     
           <version>3.4.2</version>
+
+          <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>api.GraphQLServerApplication</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
                   
         </plugin>
                 

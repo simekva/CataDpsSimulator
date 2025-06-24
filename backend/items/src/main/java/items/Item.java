@@ -16,7 +16,7 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Item {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -39,9 +39,11 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private ItemSlotEnum itemSlot;
 
-    public Item() {}
+    public Item() {
+    }
 
-    public Item(String name, int itemLevel, ItemSlotEnum itemSlot, Collection<GemSlot> gemSlots, Collection<Stat> stats) {
+    public Item(String name, int itemLevel, ItemSlotEnum itemSlot, Collection<GemSlot> gemSlots,
+            Collection<Stat> stats) {
 
         this.name = name;
         this.itemLevel = itemLevel;
@@ -50,6 +52,10 @@ public class Item {
         this.gemSlots = gemSlots;
 
         this.stats = stats;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
 }

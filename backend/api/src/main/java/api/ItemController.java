@@ -1,5 +1,6 @@
 package api;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import items.GemSlot;
 import items.Item;
 import items.ItemRepository;
 import items.Stat;
+import items.Enums.GemSlotColorEnum;
 import items.Enums.ItemSlotEnum;
 
 @Controller
@@ -25,28 +27,60 @@ public class ItemController {
 
     @QueryMapping
     public List<Item> allItems() {
-        return itemRepository.findAll();
+        System.out.println("Asked to return all items");
+
+        List<Item> items = itemRepository.findAll();
+
+        List<String> itemNames = new ArrayList<>();
+
+        for (Item item : items) {
+            itemNames.add(item.getName());
+        }
+
+        System.out.println("Returning all items: " + itemNames.toString());
+        return items;
     }
-    
+
     @QueryMapping
     public Item itemById(@Argument("id") Long id) {
-        return itemRepository.findById(id).orElse(null);
+        System.out.println("Asked to find item with id: " + id);
+        Item item = itemRepository.findById(id).orElse(null);
+
+        System.out.println("Returning item: " + item.getName());
+        return item;
     }
 
     @MutationMapping
     public Item createItem(@Argument("name") String name, @Argument("itemLevel") int itemlevel,
-    @Argument("itemSlot") ItemSlotEnum itemSlot, @Argument("gemSlots") Collection<GemSlotInput> gemSlotInputs,
-    @Argument("stats") Collection<StatInput> statsInput) {
+            @Argument("itemSlot") ItemSlotEnum itemSlot, @Argument("gemSlots") Collection<GemSlotInput> gemSlotInputs,
+            @Argument("stats") Collection<StatInput> statsInput) {
+
+        List<GemSlotColorEnum> gemSlotsColors = new ArrayList<>();
+        for (GemSlotInput slot : gemSlotInputs) {
+            gemSlotsColors.add(slot.getColor());
+        }
+
+        List<String> statsAsString = new ArrayList<>();
+        for (StatInput stat : statsInput) {
+            statsAsString.add(stat.toString() + "\n");
+        }
+
+        System.out.println("Asked to create item with params: " + "\n"
+                + "Name: " + name + "\n"
+                + "ItemLevel: " + itemlevel + "\n"
+                + "ItemSlot: " + itemSlot + "\n"
+                + "GemSlots: " + gemSlotsColors + "\n"
+                + "Stats: " + statsAsString
+
+        );
 
         List<GemSlot> gemSlotsList = gemSlotInputs.stream()
-        .map(input -> new GemSlot(input.getColor()))
-        .toList();
+                .map(input -> new GemSlot(input.getColor()))
+                .toList();
 
         List<Stat> statsList = statsInput.stream()
-        .map(input -> new Stat(input.getKey(), input.getValue()))
-        .toList();
-
-        System.out.println(gemSlotsList);
+                .map(input -> new Stat(input.getKey(), input.getValue()))
+                .toList();
 
         Item item = new Item(name, itemlevel, itemSlot, gemSlotsList, statsList);
         itemRepository.save(item);
@@ -56,11 +90,15 @@ public class ItemController {
 
     @MutationMapping
     public Item deleteItem(@Argument("id") Long id) {
-            Item itemToDelete = itemById(id);
-            if (itemToDelete != null) {
-                itemRepository.delete(itemToDelete);
-            }
-            return itemToDelete;
+        System.out.println("Asked to delete item with id: " + id);
+        Item itemToDelete = itemById(id);
+        if (itemToDelete != null) {
+            itemRepository.delete(itemToDelete);
+            System.out.println("Deleted item: " + itemToDelete.toString());
+        } else {
+            System.out.println("Could not delete item with id: " + id);
+        }
+        return itemToDelete;
     }
-    
+
 }
