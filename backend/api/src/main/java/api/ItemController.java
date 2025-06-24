@@ -101,4 +101,18 @@ public class ItemController {
         return itemToDelete;
     }
 
+    @QueryMapping
+    public List<Item> itemBySlot(@Argument("itemSlot") ItemSlotEnum itemSlot) {
+        System.out.println("Asked to get all items with slot: " + itemSlot);
+
+        List<Item> itemsInSlot = itemRepository.findByItemSlot(itemSlot);
+
+        List<String> itemNames = new ArrayList<>();
+        for (Item item : itemsInSlot) {
+            itemNames.add(item.getName());
+        }
+        System.out.println("Found items: " + itemNames.toString());
+        return itemsInSlot;
+    }
+
 }

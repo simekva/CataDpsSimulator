@@ -1,7 +1,8 @@
 type Query {
   allItems: [Item!]!
-  itemById(id: ID!): Item
+  itemById(id: ID!): Item!
   getWowClass: WowClass!
+  itemBySlot(itemSlot: ItemSlotEnum!): [Item!]!
 }
 
 type Mutation {
@@ -40,9 +41,9 @@ enum ItemSlotEnum {
 }
 
 enum GemSlotColorEnum {
-  META,
-  RED,
-  BLUE,
+  META
+  RED
+  BLUE
   YELLOW
 }
 
@@ -140,4 +141,3 @@ input BaseStatsInput {
   parryChance: Float!
   blockChance: Float!
 }
-
