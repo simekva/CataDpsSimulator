@@ -1,7 +1,6 @@
 import { WowClasses } from "../Enums";
 
 import { Header } from "../Components/Header";
-import { GetItem } from "../Components/GetItem";
 
 interface ClassPageProps {
   wowClass: WowClasses;
@@ -14,7 +13,6 @@ function ClassPage({ wowClass }: ClassPageProps) {
       <div>
         <h1>Class Page</h1>
         <p>This is the {wowClass} page.</p>
-      {<GetItem />}
       </div>
     </>
   );

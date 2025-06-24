@@ -29,3 +29,17 @@ export const CREATE_ITEM_MUTATION = gql`
     }
 
 `
+
+export const DELETE_ITEM_MUTATION = gql`
+
+    mutation deleteItem($id: ID!) {
+        deleteItem(id: $id) {
+            id
+            name
+            itemLevel
+            itemSlot
+            gemSlots {color}
+            stats {key, value}
+        }
+    }
+`
