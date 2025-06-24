@@ -1,4 +1,4 @@
-import { WowClasses } from "../WowClasses";
+import { WowClasses } from "../Enums";
 
 export function Header() {
   return (

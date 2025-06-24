@@ -1,4 +1,4 @@
-import { WowClasses } from "../WowClasses";
+import { WowClasses } from "../Enums";
 
 import { Header } from "../Components/Header";
 import { GetItem } from "../Components/GetItem";

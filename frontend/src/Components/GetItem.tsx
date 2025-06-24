@@ -1,23 +1,7 @@
 import request, { gql } from "graphql-request"
 import { useEffect, useState } from "react"
+import type { Item } from "../Interfaces";
 
-interface Stat {
-    key: string,
-    value: string
-}
-
-interface GemSlot {
-    color: string
-}
-
-interface Item {
-    id: number,
-    name: string,
-    itemSlot: string,
-    itemLevel: number,
-    stats: Stat[],
-    gemSlots: GemSlot[]
-}
 
 interface AllItemsResponse {
   allItems?: Item[] | null;
