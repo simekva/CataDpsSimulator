@@ -1,4 +1,4 @@
-package items.Inputs;
+package api.dtos;
 
 import items.Enums.StatsEnum;
 

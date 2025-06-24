@@ -51,4 +51,5 @@ public class Item {
 
         this.stats = stats;
     }
+
 }

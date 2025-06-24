@@ -9,13 +9,13 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
+import api.dtos.GemSlotInput;
+import api.dtos.StatInput;
 import items.GemSlot;
 import items.Item;
 import items.ItemRepository;
 import items.Stat;
 import items.Enums.ItemSlotEnum;
-import items.Inputs.GemSlotInput;
-import items.Inputs.StatInput;
 
 @Controller
 public class ItemController {
@@ -56,10 +56,11 @@ public class ItemController {
 
     @MutationMapping
     public Item deleteItem(@Argument("id") Long id) {
-        Item itemToDelete = itemById(id);
-        itemRepository.delete(itemById(id));
-
-        return itemToDelete;
+            Item itemToDelete = itemById(id);
+            if (itemToDelete != null) {
+                itemRepository.delete(itemToDelete);
+            }
+            return itemToDelete;
     }
     
 }
