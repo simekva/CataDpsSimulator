@@ -3,7 +3,7 @@ package api.dtos;
 import items.Enums.StatsEnum;
 
 public class StatInput {
-    
+
     private StatsEnum key;
     private int value;
 
@@ -21,5 +21,10 @@ public class StatInput {
 
     public void setValue(int n) {
         this.value = n;
+    }
+
+    @Override
+    public String toString() {
+        return ("Stat: " + this.key + ". Value: " + this.value);
     }
 }
