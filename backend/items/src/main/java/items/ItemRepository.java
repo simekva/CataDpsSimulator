@@ -10,4 +10,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findByItemSlot(ItemSlotEnum itemSlot);
 
+    Item findByNameAndItemLevel(String name, int itemLevel);
+
 }

@@ -83,6 +83,13 @@ public class ItemController {
                 .toList();
 
         Item item = new Item(name, itemlevel, itemSlot, gemSlotsList, statsList);
+
+        Item identicalItem = itemRepository.findByNameAndItemLevel(name, itemlevel);
+
+        if (identicalItem != null) {
+            System.out.println("Item with name: " + name + ", ilvl: " + itemlevel + " already exists.");
+            return item;
+        }
         itemRepository.save(item);
         return item;
 
