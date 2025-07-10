@@ -53,7 +53,8 @@ public class ItemController {
     @MutationMapping
     public Item createItem(@Argument("name") String name, @Argument("itemLevel") int itemlevel,
             @Argument("itemSlot") ItemSlotEnum itemSlot, @Argument("gemSlots") Collection<GemSlotInput> gemSlotInputs,
-            @Argument("stats") Collection<StatInput> statsInput) {
+            @Argument("stats") Collection<StatInput> statsInput,
+            @Argument("isTwoHand") boolean isTwoHand) {
 
         List<GemSlotColorEnum> gemSlotsColors = new ArrayList<>();
         for (GemSlotInput slot : gemSlotInputs) {
@@ -82,7 +83,7 @@ public class ItemController {
                 .map(input -> new Stat(input.getKey(), input.getValue()))
                 .toList();
 
-        Item item = new Item(name, itemlevel, itemSlot, gemSlotsList, statsList);
+        Item item = new Item(name, itemlevel, itemSlot, gemSlotsList, statsList, isTwoHand);
 
         Item identicalItem = itemRepository.findByNameAndItemLevel(name, itemlevel);
 

@@ -39,11 +39,14 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private ItemSlotEnum itemSlot;
 
+    @Column(nullable = true)
+    private boolean isTwoHand;
+
     public Item() {
     }
 
     public Item(String name, int itemLevel, ItemSlotEnum itemSlot, Collection<GemSlot> gemSlots,
-            Collection<Stat> stats) {
+            Collection<Stat> stats, boolean isTwoHand) {
 
         this.name = name;
         this.itemLevel = itemLevel;
@@ -52,6 +55,8 @@ public class Item {
         this.gemSlots = gemSlots;
 
         this.stats = stats;
+
+        this.isTwoHand = isTwoHand;
     }
 
     public String getName() {
