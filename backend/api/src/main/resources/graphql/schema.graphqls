@@ -37,7 +37,6 @@ enum ItemSlotEnum {
   BACK
   MAIN_HAND
   OFF_HAND
-  TWO_HAND
 }
 
 enum GemSlotColorEnum {
