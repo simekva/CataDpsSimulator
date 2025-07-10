@@ -1,5 +1,15 @@
 package items;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ItemRepository extends JpaRepository<Item, Long>{}
+import items.Enums.ItemSlotEnum;
+
+public interface ItemRepository extends JpaRepository<Item, Long> {
+
+    List<Item> findByItemSlot(ItemSlotEnum itemSlot);
+
+    Item findByNameAndItemLevel(String name, int itemLevel);
+
+}

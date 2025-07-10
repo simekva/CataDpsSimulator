@@ -25,3 +25,16 @@ export const ITEM_BY_ID_QUERY = gql`
         }
     }
 `
+
+export const ITEMS_BY_ITEMSLOT_QUERY = gql`
+    query itemBySlot($itemSlot: ItemSlotEnum!) {
+        itemBySlot(itemSlot: $itemSlot) {
+            id
+            name
+            itemSlot
+            itemLevel
+            gemSlots {color}
+            stats {key, value}
+        }
+    }
+`

@@ -83,6 +83,13 @@ public class ItemController {
                 .toList();
 
         Item item = new Item(name, itemlevel, itemSlot, gemSlotsList, statsList);
+
+        Item identicalItem = itemRepository.findByNameAndItemLevel(name, itemlevel);
+
+        if (identicalItem != null) {
+            System.out.println("Item with name: " + name + ", ilvl: " + itemlevel + " already exists.");
+            return item;
+        }
         itemRepository.save(item);
         return item;
 
@@ -99,6 +106,20 @@ public class ItemController {
             System.out.println("Could not delete item with id: " + id);
         }
         return itemToDelete;
+    }
+
+    @QueryMapping
+    public List<Item> itemBySlot(@Argument("itemSlot") ItemSlotEnum itemSlot) {
+        System.out.println("Asked to get all items with slot: " + itemSlot);
+
+        List<Item> itemsInSlot = itemRepository.findByItemSlot(itemSlot);
+
+        List<String> itemNames = new ArrayList<>();
+        for (Item item : itemsInSlot) {
+            itemNames.add(item.getName());
+        }
+        System.out.println("Found items: " + itemNames.toString());
+        return itemsInSlot;
     }
 
 }

@@ -6,6 +6,7 @@ import { IndexPage } from "./Pages/IndexPage";
 import { NoPage } from "./Pages/NoPage";
 import { CreateItemPage } from "./Pages/CreateItemPage";
 import { GraphQLClient } from "graphql-request";
+import { ItemsPage } from "./Pages/ItemsPage";
 
 const endpoint = "http://localhost:8080/graphql";
 
@@ -23,6 +24,7 @@ const App = () => (
         />
       ))}
       <Route path="admin" element={<CreateItemPage />}></Route>
+      <Route path="items" element={<ItemsPage />}></Route>
       <Route path="*" element={<NoPage />}></Route>
     </Routes>
   </BrowserRouter>
