@@ -53,6 +53,13 @@ export function CreateItemPage() {
     }
   };
 
+  const handleItemSlotChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setItemSlot(e.target.value);
+    if (e.target.value !== ItemSlots.MAIN_HAND) {
+      setIsTwoHand(false);
+    }
+  };
+
   async function handleSubmit() {
     const variables = {
       name: name,
@@ -123,7 +130,7 @@ export function CreateItemPage() {
             <select
               className="border px-3 py-2 rounded"
               value={itemSlot}
-              onChange={(e) => setItemSlot(e.target.value)}
+              onChange={(e) => handleItemSlotChange(e)}
             >
               {Object.keys(ItemSlots).map((slot) => (
                 <option key={slot} value={slot}>
