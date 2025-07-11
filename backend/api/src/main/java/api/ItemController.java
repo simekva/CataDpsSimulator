@@ -1,7 +1,6 @@
 package api;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import api.dtos.GemSlotInput;
+import api.dtos.ItemInput;
 import api.dtos.StatInput;
 import items.GemSlot;
 import items.Item;
@@ -51,44 +51,43 @@ public class ItemController {
     }
 
     @MutationMapping
-    public Item createItem(@Argument("name") String name, @Argument("itemLevel") int itemlevel,
-            @Argument("itemSlot") ItemSlotEnum itemSlot, @Argument("gemSlots") Collection<GemSlotInput> gemSlotInputs,
-            @Argument("stats") Collection<StatInput> statsInput) {
+    public Item createItem(@Argument("itemInput") ItemInput itemInput) {
 
         List<GemSlotColorEnum> gemSlotsColors = new ArrayList<>();
-        for (GemSlotInput slot : gemSlotInputs) {
+        for (GemSlotInput slot : itemInput.getGemSlots()) {
             gemSlotsColors.add(slot.getColor());
         }
 
         List<String> statsAsString = new ArrayList<>();
-        for (StatInput stat : statsInput) {
+        for (StatInput stat : itemInput.getStats()) {
             statsAsString.add(stat.toString() + "\n");
         }
 
         System.out.println("Asked to create item with params: " + "\n"
-                + "Name: " + name + "\n"
-                + "ItemLevel: " + itemlevel + "\n"
-                + "ItemSlot: " + itemSlot + "\n"
+                + "Name: " + itemInput.getName() + "\n"
+                + "ItemLevel: " + itemInput.getItemLevel() + "\n"
+                + "ItemSlot: " + itemInput.getItemSlot() + "\n"
+                + "IsTwoHand: " + itemInput.getIsTwoHand() + "\n"
                 + "GemSlots: " + gemSlotsColors + "\n"
-                + "Stats: " + statsAsString
+                + "Stats: " + statsAsString);
 
-        );
-
-        List<GemSlot> gemSlotsList = gemSlotInputs.stream()
+        List<GemSlot> gemSlotsList = itemInput.getGemSlots().stream()
                 .map(input -> new GemSlot(input.getColor()))
                 .toList();
 
-        List<Stat> statsList = statsInput.stream()
+        List<Stat> statsList = itemInput.getStats().stream()
                 .map(input -> new Stat(input.getKey(), input.getValue()))
                 .toList();
 
-        Item item = new Item(name, itemlevel, itemSlot, gemSlotsList, statsList);
+        Item item = new Item(itemInput.getName(), itemInput.getItemLevel(), itemInput.getItemSlot(), gemSlotsList,
+                statsList, itemInput.getIsTwoHand());
 
-        Item identicalItem = itemRepository.findByNameAndItemLevel(name, itemlevel);
+        Item identicalItem = itemRepository.findByNameAndItemLevel(itemInput.getName(), itemInput.getItemLevel());
 
         if (identicalItem != null) {
-            System.out.println("Item with name: " + name + ", ilvl: " + itemlevel + " already exists.");
-            return item;
+            throw new IllegalArgumentException(
+                    "Item with name: " + itemInput.getName() + ", ilvl: " + itemInput.getItemLevel()
+                            + " already exists.");
         }
         itemRepository.save(item);
         return item;

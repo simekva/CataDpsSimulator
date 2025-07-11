@@ -12,6 +12,7 @@ export interface Item {
     name: string,
     itemSlot: string,
     itemLevel: number,
+    isTwoHand: boolean,
     stats: Stat[],
     gemSlots: GemSlot[]
 }

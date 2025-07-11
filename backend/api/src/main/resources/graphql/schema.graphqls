@@ -12,13 +12,7 @@ type Mutation {
     sStats: SecondaryStatsInput!
     baseStats: BaseStatsInput!
   ): WowClass!
-  createItem(
-    name: String!
-    itemLevel: Int!
-    itemSlot: ItemSlotEnum!
-    gemSlots: [GemSlotInput!]!
-    stats: [statInput!]!
-  ): Item!
+  createItem(itemInput: ItemInput!): Item!
   deleteItem(id: ID!): Item
 }
 
@@ -39,6 +33,22 @@ enum ItemSlotEnum {
   OFF_HAND
 }
 
+enum StatEnum {
+  ARMOR
+  STRENGTH
+  AGILITY
+  INTELLECT
+  STAMINA
+  SPIRIT
+  EXPERTISERATING
+  HITRATING
+  CRITRATING
+  MASTERYRATING
+  HASTERATING
+  ATTACKPOWER
+  SPELLPOWER
+}
+
 enum GemSlotColorEnum {
   META
   RED
@@ -53,6 +63,16 @@ type Item {
   itemSlot: ItemSlotEnum!
   gemSlots: [GemSlot!]!
   stats: [stat!]!
+  isTwoHand: Boolean
+}
+
+input ItemInput {
+  name: String!
+  itemLevel: Int!
+  itemSlot: ItemSlotEnum!
+  gemSlots: [GemSlotInput!]!
+  stats: [statInput!]!
+  isTwoHand: Boolean = false
 }
 
 type GemSlot {
@@ -60,16 +80,16 @@ type GemSlot {
 }
 
 input GemSlotInput {
-  color: String!
+  color: GemSlotColorEnum!
 }
 
 type stat {
-  key: String!
+  key: StatEnum!
   value: Int!
 }
 
 input statInput {
-  key: String!
+  key: StatEnum!
   value: Int!
 }
 

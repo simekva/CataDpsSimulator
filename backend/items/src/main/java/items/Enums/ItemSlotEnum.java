@@ -16,6 +16,5 @@ public enum ItemSlotEnum {
     TRINKET1,
     TRINKET2,
     MAIN_HAND,
-    OFF_HAND,
-    RANGED
+    OFF_HAND
 }
