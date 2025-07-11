@@ -67,10 +67,9 @@ public class ItemController {
                 + "Name: " + itemInput.getName() + "\n"
                 + "ItemLevel: " + itemInput.getItemLevel() + "\n"
                 + "ItemSlot: " + itemInput.getItemSlot() + "\n"
+                + "IsTwoHand: " + itemInput.getIsTwoHand() + "\n"
                 + "GemSlots: " + gemSlotsColors + "\n"
-                + "Stats: " + statsAsString
-
-        );
+                + "Stats: " + statsAsString);
 
         List<GemSlot> gemSlotsList = itemInput.getGemSlots().stream()
                 .map(input -> new GemSlot(input.getColor()))
@@ -81,14 +80,14 @@ public class ItemController {
                 .toList();
 
         Item item = new Item(itemInput.getName(), itemInput.getItemLevel(), itemInput.getItemSlot(), gemSlotsList,
-                statsList);
+                statsList, itemInput.getIsTwoHand());
 
         Item identicalItem = itemRepository.findByNameAndItemLevel(itemInput.getName(), itemInput.getItemLevel());
 
         if (identicalItem != null) {
-            System.out.println("Item with name: " + itemInput.getName() + ", ilvl: " + itemInput.getItemLevel()
-                    + " already exists.");
-            return item;
+            throw new IllegalArgumentException(
+                    "Item with name: " + itemInput.getName() + ", ilvl: " + itemInput.getItemLevel()
+                            + " already exists.");
         }
         itemRepository.save(item);
         return item;

@@ -2,8 +2,6 @@ package api.dtos;
 
 import java.util.Collection;
 
-import items.GemSlot;
-import items.Stat;
 import items.Enums.ItemSlotEnum;
 
 public class ItemInput {
@@ -14,6 +12,7 @@ public class ItemInput {
     private ItemSlotEnum itemSlot;
     private Collection<GemSlotInput> gemSlots;
     private Collection<StatInput> stats;
+    private boolean isTwoHand;
 
     public long getId() {
         return this.id;
@@ -61,5 +60,13 @@ public class ItemInput {
 
     public void setStats(Collection<StatInput> stats) {
         this.stats = stats;
+    }
+
+    public boolean getIsTwoHand() {
+        return this.isTwoHand;
+    }
+
+    public void setIsTwoHand(boolean isTwoHand) {
+        this.isTwoHand = isTwoHand;
     }
 }

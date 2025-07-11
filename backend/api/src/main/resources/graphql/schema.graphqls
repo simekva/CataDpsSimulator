@@ -31,7 +31,6 @@ enum ItemSlotEnum {
   BACK
   MAIN_HAND
   OFF_HAND
-  TWO_HAND
 }
 
 enum StatEnum {
@@ -64,6 +63,7 @@ type Item {
   itemSlot: ItemSlotEnum!
   gemSlots: [GemSlot!]!
   stats: [stat!]!
+  isTwoHand: Boolean
 }
 
 input ItemInput {
@@ -72,6 +72,7 @@ input ItemInput {
   itemSlot: ItemSlotEnum!
   gemSlots: [GemSlotInput!]!
   stats: [statInput!]!
+  isTwoHand: Boolean = false
 }
 
 type GemSlot {
