@@ -64,7 +64,7 @@ export function ItemsPage() {
               items.map((item) => (
                 <li key={item.id} className="my-4">
                   <b>Name:</b> {item.name}. Ilvl: {item.itemLevel}. Slot:{" "}
-                  {item.itemSlot}.
+                  {item.itemSlot}. Two Handed: {String(item.isTwoHand)}
                   <p key={item.id}>
                     {item.stats.map((stat) => (
                       <>

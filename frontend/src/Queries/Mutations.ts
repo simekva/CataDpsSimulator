@@ -2,12 +2,13 @@ import { gql } from "graphql-request";
 
 export const CREATE_ITEM_MUTATION = gql`
 
-    mutation CreateItem($itemInput: ItemInput!) {
-        createItem(itemInput: $itemInput) {
+    mutation CreateItem($ItemInput: ItemInput!) {
+        createItem(itemInput: $ItemInput) {
             id
             name
             itemLevel
             itemSlot
+            isTwoHand
             gemSlots {color}
             stats {key, value}
         }
@@ -23,6 +24,7 @@ export const DELETE_ITEM_MUTATION = gql`
             name
             itemLevel
             itemSlot
+            isTwoHand
             gemSlots {color}
             stats {key, value}
         }

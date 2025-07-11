@@ -29,9 +29,4 @@ const App = () => (
     </Routes>
   </BrowserRouter>
 );
-
-const root = document.getElementById("root");
-
-ReactDOM.createRoot(root!).render(<App />);
-
 export default App;

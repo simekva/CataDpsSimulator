@@ -26,8 +26,6 @@ export const ItemSlots = {
   TRINKET: "TRINKET",
   MAIN_HAND: "MAIN_HAND",
   OFF_HAND: "OFF_HAND",
-  TWO_HAND: "TWO_HAND",
-  RANGED: "RANGED"
 }
 
 export const StatsEnum = {
