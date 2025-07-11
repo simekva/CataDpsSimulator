@@ -8,6 +8,7 @@ export const CREATE_ITEM_MUTATION = gql`
             name
             itemLevel
             itemSlot
+            isTwoHand
             gemSlots {color}
             stats {key, value}
         }
@@ -23,6 +24,7 @@ export const DELETE_ITEM_MUTATION = gql`
             name
             itemLevel
             itemSlot
+            isTwoHand
             gemSlots {color}
             stats {key, value}
         }

@@ -7,6 +7,7 @@ export const ALL_ITEMS_QUERY = gql`
             name
             itemSlot
             itemlevel
+            isTwoHand
             gemSlots {color}
             stats {key, value}
         }
@@ -20,6 +21,7 @@ export const ITEM_BY_ID_QUERY = gql`
             name
             itemSlot
             itemLevel
+            isTwoHand
             gemSlots {color}
             stats {key, value}
         }
@@ -33,6 +35,7 @@ export const ITEMS_BY_ITEMSLOT_QUERY = gql`
             name
             itemSlot
             itemLevel
+            isTwoHand
             gemSlots {color}
             stats {key, value}
         }

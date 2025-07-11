@@ -60,6 +60,7 @@ export function CreateItemPage() {
       itemSlot: itemSlot,
       gemSlots: gemSlots,
       stats: stats,
+      isTwoHand: isTwoHand,
     };
 
     if (name.length < 1) {
@@ -76,6 +77,7 @@ export function CreateItemPage() {
     setItemLevel(0);
     setStats([]);
     setGemSlots([]);
+    setIsTwoHand(false);
     console.log(data);
   }
 
