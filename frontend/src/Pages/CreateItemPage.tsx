@@ -38,6 +38,21 @@ export function CreateItemPage() {
     setGemSlots((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const renderTwoHandCheckbox = () => {
+    if (itemSlot == ItemSlots.MAIN_HAND) {
+      return (
+        <label>
+          <input
+            type="checkbox"
+            checked={isTwoHand}
+            onChange={() => setIsTwoHand(!isTwoHand)}
+          />
+          <span className="ml-2">Two-Handed</span>
+        </label>
+      );
+    }
+  };
+
   async function handleSubmit() {
     const variables = {
       name: name,
@@ -114,14 +129,7 @@ export function CreateItemPage() {
                 </option>
               ))}
             </select>
-            <label>
-              <input
-                type="checkbox"
-                defaultChecked={false}
-                onChange={() => setIsTwoHand(!isTwoHand)}
-              ></input>
-              <span className="ml-2">Two-Handed</span>
-            </label>
+            {renderTwoHandCheckbox()}
           </div>
         </div>
 
