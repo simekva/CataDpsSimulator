@@ -18,6 +18,8 @@ export function CreateItemPage() {
   const [statValue, setStatValue] = useState(0);
   const [selectedGemColor, setSelectedGemColor] = useState("RED");
 
+  const [isTwoHand, setIsTwoHand] = useState(false);
+
   const handleAddStat = () => {
     if (!selectedStat || isNaN(statValue)) return;
     setStats((prev) => [...prev, { key: selectedStat, value: statValue }]);
@@ -101,18 +103,25 @@ export function CreateItemPage() {
         <div>
           <h2 className="text-xl font-semibold mb-4">Item Slot</h2>
           <div className="flex flex-wrap gap-4">
-            {Object.keys(ItemSlots).map((slot) => (
-              <label key={slot} className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="itemSlot"
-                  value={slot}
-                  checked={itemSlot === slot}
-                  onChange={(e) => setItemSlot(e.target.value)}
-                />
-                {slot}
-              </label>
-            ))}
+            <select
+              className="border px-3 py-2 rounded"
+              value={itemSlot}
+              onChange={(e) => setItemSlot(e.target.value)}
+            >
+              {Object.keys(ItemSlots).map((slot) => (
+                <option key={slot} value={slot}>
+                  {slot}
+                </option>
+              ))}
+            </select>
+            <label>
+              <input
+                type="checkbox"
+                defaultChecked={false}
+                onChange={() => setIsTwoHand(!isTwoHand)}
+              ></input>
+              <span className="ml-2">Two-Handed</span>
+            </label>
           </div>
         </div>
 
