@@ -62,12 +62,14 @@ export function CreateItemPage() {
 
   async function handleSubmit() {
     const variables = {
-      name: name,
-      itemLevel: itemLevel,
-      itemSlot: itemSlot,
-      gemSlots: gemSlots,
-      stats: stats,
-      isTwoHand: isTwoHand,
+      ItemInput: {
+        name: name,
+        itemLevel: itemLevel,
+        itemSlot: itemSlot,
+        gemSlots: gemSlots,
+        stats: stats,
+        isTwoHand: isTwoHand,
+      },
     };
 
     if (name.length < 1) {
