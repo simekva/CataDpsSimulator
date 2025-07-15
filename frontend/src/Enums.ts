@@ -1,5 +1,6 @@
 export const WowClasses = {
   WARRIOR: "WARRIOR",
+  DRUID: "DRUID",
   PALADIN: "PALADIN",
   HUNTER: "HUNTER",
   ROGUE: "ROGUE",
@@ -8,7 +9,6 @@ export const WowClasses = {
   SHAMAN: "SHAMAN",
   MAGE: "MAGE",
   WARLOCK: "WARLOCK",
-  DRUID: "DRUID",
 } as const;
 
 export const ItemSlots = {
@@ -28,6 +28,7 @@ export const ItemSlots = {
   OFF_HAND: "OFF_HAND",
 }
 
+/** Two rings and trinket slots */
 export const ItemSlotsInput = {
   HEAD: "HEAD",
   NECK: "NECK",

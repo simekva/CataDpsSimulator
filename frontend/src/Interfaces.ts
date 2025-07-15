@@ -1,3 +1,5 @@
+import type { ItemSlots } from "./Enums"
+
 export interface Stat {
     key: string,
     value: number
@@ -10,7 +12,7 @@ export interface GemSlot {
 export interface Item {
     id: number,
     name: string,
-    itemSlot: string,
+    itemSlot: ItemSlots,
     itemLevel: number,
     isTwoHand: boolean,
     stats: Stat[],
