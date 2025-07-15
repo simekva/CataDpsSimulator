@@ -22,6 +22,23 @@ export const ItemSlots = {
   WAIST: "WAIST",
   LEGS: "LEGS",
   FEET: "FEET",
+  FINGER: "FINGER",
+  TRINKET: "TRINKET",
+  MAIN_HAND: "MAIN_HAND",
+  OFF_HAND: "OFF_HAND",
+}
+
+export const ItemSlotsInput = {
+  HEAD: "HEAD",
+  NECK: "NECK",
+  SHOULDERS: "SHOULDERS",
+  BACK: "BACK",
+  CHEST: "CHEST",
+  WRISTS: "WRISTS",
+  HANDS: "HANDS",
+  WAIST: "WAIST",
+  LEGS: "LEGS",
+  FEET: "FEET",
   FINGER1: "FINGER1",
   FINGER2: "FINGER2",
   TRINKET1: "TRINKET1",
@@ -55,6 +72,8 @@ export const GemColorsEnum = {
 export type WowClasses = (typeof WowClasses)[keyof typeof WowClasses];
 
 export type ItemSlots = (typeof ItemSlots)[keyof typeof ItemSlots];
+
+export type ItemSlotsInput = (typeof ItemSlotsInput)[keyof typeof ItemSlotsInput];
 
 export type StatsEnum = (typeof StatsEnum)[keyof typeof StatsEnum];
 
