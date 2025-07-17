@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { ItemSlotsInput } from "../Enums";
 import type { Item } from "../Interfaces";
+import { GearSlotDialog, type GearSlotDialogHandle } from "./GearSlotDialog";
 
 interface GearSlotProps {
   itemSlot: ItemSlotsInput;
-  isClicked: boolean;
 }
 
 /** Temp default item */
@@ -20,15 +20,15 @@ const defaultItem: Item = {
 
 /* Component rendering item box*/
 export function GearSlot({ itemSlot }: GearSlotProps) {
-  const [isClicked, setIsClicked] = useState(false);
-
   /** Pass setSelectedItem state to child popup component
    * https://www.geeksforgeeks.org/reactjs/how-to-set-parent-state-from-children-component-in-reactjs/
    */
   const [selectedItem, setSelectedItem] = useState<Item>(defaultItem);
 
+  const dialogRef = useRef<GearSlotDialogHandle>(null);
+
   const handleClick = () => {
-    setIsClicked((prev) => !prev);
+    dialogRef.current?.openDialog();
   };
 
   return (
@@ -45,6 +45,11 @@ export function GearSlot({ itemSlot }: GearSlotProps) {
           </p>
         </div>
       </div>
+      <GearSlotDialog
+        ref={dialogRef}
+        itemSlot={itemSlot}
+        setSelectedItem={setSelectedItem}
+      />
     </>
   );
 }
