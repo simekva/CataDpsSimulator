@@ -33,18 +33,26 @@ export function GearSlot({ itemSlot }: GearSlotProps) {
 
   return (
     <>
-      <div onClick={handleClick} className="flex border mr-4 mb-4">
-        {/* Box */}
-        <div className="border w-16 h-16">{itemSlot}</div>
-        {/* Text */}
-        <div>
-          <b>{itemSlot}</b>
-          <br />
-          <p>
-            {selectedItem.name}, {selectedItem.itemLevel}
-          </p>
+      <div
+        onClick={handleClick}
+        className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-lg shadow-sm hover:shadow-md transition mr-4 mb-4 p-2 w-64"
+      >
+        {/* Icon / Box */}
+        <div className="border w-16 h-16 flex items-center justify-center bg-gray-100 text-xs font-semibold rounded">
+          {itemSlot}
+        </div>
+
+        {/* Info */}
+        <div className="ml-4">
+          <div className="font-bold text-sm capitalize">
+            {itemSlot.toLowerCase()}
+          </div>
+          <div className="text-gray-700 text-sm">
+            {selectedItem.name}, ilvl {selectedItem.itemLevel}
+          </div>
         </div>
       </div>
+
       <GearSlotDialog
         ref={dialogRef}
         itemSlot={itemSlot}
