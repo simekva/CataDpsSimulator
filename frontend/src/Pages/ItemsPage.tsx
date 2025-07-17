@@ -5,7 +5,7 @@ import { graphQlCLClient } from "../App";
 import { ITEMS_BY_ITEMSLOT_QUERY } from "../Queries/Queries";
 import { Header } from "../Components/Header";
 
-interface ItemsBySlotResponse {
+export interface ItemsBySlotResponse {
   itemBySlot: Item[];
 }
 

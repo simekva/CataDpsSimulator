@@ -11,10 +11,8 @@ public enum ItemSlotEnum {
     WAIST,
     LEGS,
     FEET,
-    FINGER1,
-    FINGER2,
-    TRINKET1,
-    TRINKET2,
+    FINGER,
+    TRINKET,
     MAIN_HAND,
     OFF_HAND
 }
