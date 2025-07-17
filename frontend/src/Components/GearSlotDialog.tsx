@@ -46,25 +46,41 @@ export const GearSlotDialog = forwardRef<
 
   const handleClick = (item: Item) => {
     setSelectedItem(item);
+    dialogRef.current?.close();
     return;
   };
 
   return (
     <>
-      <dialog ref={dialogRef} className="mx-auto px-16 my-16 border">
-        {itemSlot}
+      <dialog
+        ref={dialogRef}
+        className="w-[30rem] max-w-full mx-auto my-16 rounded-md border border-gray-300 bg-white shadow-lg p-6"
+      >
+        <h2 className="text-xl font-bold mb-4 capitalize">
+          Select {itemSlot.toLowerCase()} Item
+        </h2>
 
-        <ul>
+        <ul className="space-y-2 mb-4 max-h-64 overflow-y-auto">
           {items.map((item) => (
-            <li onClick={() => handleClick(item)} key={item.id}>
-              {item.name}, {item.itemLevel}
+            <li
+              key={item.id}
+              onClick={() => handleClick(item)}
+              className="cursor-pointer px-4 py-2 border border-gray-200 rounded-md hover:bg-gray-100 transition"
+            >
+              <span className="font-medium">{item.name}</span>,
+              <span className="text-gray-600 ml-1">iLvl {item.itemLevel}</span>
             </li>
           ))}
         </ul>
 
-        <button className="border" onClick={() => dialogRef.current?.close()}>
-          Close
-        </button>
+        <div className="text-right">
+          <button
+            className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold rounded"
+            onClick={() => dialogRef.current?.close()}
+          >
+            Close
+          </button>
+        </div>
       </dialog>
     </>
   );
